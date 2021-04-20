@@ -1,0 +1,5 @@
+var elemento = document.querySelector('table tbody')
+elemento.insertAdjacentHTML('beforeend', "<%= escape_javascript(render partial: 'bookmarks/bookmark', locals: {bookmark: @bookmark}) %>")
+
+var content = document.querySelector('#bookmark_content')
+content.value = ''
