@@ -56,13 +56,13 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def api
+  def api_category
     category = Category.find(params[:id])
     hash = {
       name: category.name,
       domain: category.domain,
-      # parent_category: category.parent_category,
-      # children_categories: category.children_categories,
+      parent_category: category.parent_category,
+      children_categories: category.children_categories,
       bookmarks: category.bookmarks.pluck(:title)
     }
     render json: hash

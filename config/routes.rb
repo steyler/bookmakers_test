@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   resources :kinds
   resources :categories
   root 'bookmarks#index'
-  get 'categories/:id/api_v1', to: 'categories#api', as: 'api'
+  get 'categories/:id/api_v1', to: 'categories#api_category', as: 'api'
 end
