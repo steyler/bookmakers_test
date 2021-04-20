@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   resources :bookmarks
   resources :kinds
   resources :categories
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root 'bookmarks#index'
+  get 'categories/:id/api_config', to: 'categories#api', as: 'api'
 end
