@@ -56,6 +56,18 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def api_config
+    category = Category.find(params[:id])
+    hash = {
+      name: category.name,
+      domain: category.domain,
+      parent_category: category.parent_category,
+      children_categories: category.children_categories,
+      bookmarks: category.bookmarks.pluck(:title)
+    }
+    render json: hash
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_category

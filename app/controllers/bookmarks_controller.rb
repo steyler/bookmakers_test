@@ -5,6 +5,8 @@ class BookmarksController < ApplicationController
   def index
     @bookmarks = Bookmark.all
     @bookmark = Bookmark.new
+    @bookmarks_cats = Bookmark.joins(:category).group("categories.name").count
+    @carlitos = Bookmark.joins(:kind).group("kinds.name").count
     
   end
 
@@ -14,6 +16,11 @@ class BookmarksController < ApplicationController
       format.js { render layout: false }
       format.html { render :show }
     end
+  end
+
+  def bookmarks_category
+    @bookmarks = Bookmark.where(category: cat_params)
+    render json: @bookmarks.as_json(include: :category)
   end
 
   # GET /bookmarks/new
@@ -73,6 +80,10 @@ class BookmarksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def bookmark_params
-      params.require(:bookmark).permit(:title, :url, category_ids: [], kind_ids: [])
+      params.require(:bookmark).permit(:title, :url, :category_id, :kind_id)
+    end
+    
+    def cat_params
+      params.require(:category)
     end
 end
