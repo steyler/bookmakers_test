@@ -55,7 +55,11 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-
+# add random seed, however I did not use this
 gem 'faker'
 
+# this is mainly for graphs and charts
 gem 'chartkick'
+
+#Entity relation diagram
+gem 'rails-erd', group: :development
