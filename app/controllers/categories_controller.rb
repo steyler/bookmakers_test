@@ -56,13 +56,13 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def api_config
+  def api
     category = Category.find(params[:id])
     hash = {
       name: category.name,
       domain: category.domain,
-      parent_category: category.parent_category,
-      children_categories: category.children_categories,
+      # parent_category: category.parent_category,
+      # children_categories: category.children_categories,
       bookmarks: category.bookmarks.pluck(:title)
     }
     render json: hash
@@ -76,6 +76,6 @@ class CategoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def category_params
-      params.require(:category).permit(:name, :domain, :category_id)
+      params.require(:category).permit(:name, :domain, :categories_id)
     end
 end

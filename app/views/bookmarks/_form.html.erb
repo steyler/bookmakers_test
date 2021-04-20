@@ -31,7 +31,7 @@
     <%= form.select :kind_id, Kind.all.collect {|t| [t.name, t.id]}, {} ,id: :bookmark_kind_id, include_blank:false %>
   </div>
 
-  <div class="actions btn btn-danger">
+  <div class="actions btn btn-info">
     <%= form.submit data: {confirm: 'Realmente quieres crear este marcador?'} %>
   </div>
   <br>
